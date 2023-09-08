@@ -17,16 +17,26 @@ function OfferCard({offer, type, onOfferCardHover}: OfferCardProps): JSX.Element
   const [activeFavorite, setActiveFavorite] = useState(offer.isFavorite);
 
   const handleOfferCardHover = useCallback(() => {
-    if (type !== 'near-places') {
-      onOfferCardHover?.(offer.id);
-    }
-  }, [offer.id , onOfferCardHover, type]);
+    onOfferCardHover?.(offer.id);
+  }, [offer.id , onOfferCardHover]);
+
+  // отключение подсветки соседних маркеров на карте
+  //const handleOfferCardHover = useCallback(() => {
+  //  if (type !== 'near-places') {
+  //    onOfferCardHover?.(offer.id);
+  //  }
+  // }, [offer.id , onOfferCardHover, type]);
 
   const handleOfferCardLeave = useCallback(() => {
-    if (type !== 'near-places') {
-      onOfferCardHover?.(undefined);
-    }
-  }, [onOfferCardHover, type]);
+    onOfferCardHover?.(undefined);
+  }, [onOfferCardHover]);
+
+  // отключение подсветки соседних маркеров на карте
+  //const handleOfferCardLeave = useCallback(() => {
+  //  if (type !== 'near-places') {
+  //    onOfferCardHover?.(undefined);
+  //  }
+  //}, [onOfferCardHover, type]);
 
   return (
     <article className={classNames({
